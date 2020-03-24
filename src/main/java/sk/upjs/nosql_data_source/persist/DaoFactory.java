@@ -14,8 +14,8 @@ public enum DaoFactory {
 		if (jdbcTemplate == null) {
 			MysqlDataSource dataSource = new MysqlDataSource();
 			dataSource.setDatabaseName("ais-like");
-			dataSource.setUser("ais-like-user");
-			dataSource.setPassword("iceIceBaby");
+			dataSource.setUser("student");
+			dataSource.setPassword("nosql");
 			jdbcTemplate = new JdbcTemplate(dataSource);
 		}
 		return jdbcTemplate;
@@ -36,7 +36,7 @@ public enum DaoFactory {
 	
 	public synchronized StudentDao getStudentDao() {
 		if (studentDao == null) {
-			studentDao = new MysqlStudentDao(getJDBCTemplateServer());
+			studentDao = new MysqlStudentDao(getJDBCTemplateLocal());
 		}
 		return studentDao;
 	}
